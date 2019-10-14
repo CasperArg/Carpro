@@ -81,9 +81,7 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Autos en stock</div>
+            
 
                 <!--<div class="links">
                     <a href="/laravel/facepro/public/autos/mostrarautos">Mostrar Autos</a>
@@ -96,7 +94,26 @@
 
                 <div>
 
-                <table border="1">
+                <div class="container text-center py">
+                
+                <!--<table class="table table-dark center">
+                    <thead>
+                        <tr>
+                            <td>Buscador</td>
+                            <td><input type="text" id="busqueda"></td>
+                        <tr>
+                    <thead>
+                </table>-->
+
+                <table class="table table-dark center">
+                    <thead>
+                        <tr>
+                            <td><h1>Autos en stock</h1></td>
+                        <tr>
+                    <thead>
+                </table>
+
+                <table table class="table table-dark center">
                     <tr>
                         <th>Marca</th>
                         <th>Modelo</th>
@@ -121,7 +138,7 @@
 
                 </table>
 
-                
+                </div>
                 </div>
 
                 

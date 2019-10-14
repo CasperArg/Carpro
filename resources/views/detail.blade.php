@@ -80,9 +80,8 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Detalles del auto</div>
+            <div class="container text-center py">
+                
 
                 <!--<div class="links">
                     <a href="/laravel/facepro/public/autos/mostrarautos">Mostrar Autos</a>
@@ -93,16 +92,62 @@
                 
 
 
-                <div>
-
-                <h1>{{$auto['brand']. " ".$auto['model']}}</h1>
-
-                <h2>Color: {{$auto['color']}}</h2>
-                <h2>Año: {{$auto['year']}}</h2>
-                <h2>Kilometraje: {{$auto['kilometers']." Km"}}</h2>
                 
-                
-                </div>
+
+                <table class="table table-dark center">
+                    <thead>
+                        <tr>
+                            <td><h1>Detalles del {{$auto['brand']. " ".$auto['model']}}</h1></td>
+                        <tr>
+                    <thead>
+                </table>
+
+                <table class="table table-dark">
+                    
+                    <tbody>
+                        <tr>
+                            <td>Color</td>
+                            <td><input value="{{$auto['color']}}"></td>                        
+                        </tr>
+                        <tr>
+                            <td>Año</td>
+                            <td><input value="{{$auto['year']}}"></td>                         
+                        </tr>
+
+                        <tr>
+                            <td>Kilometraje</td>
+                            <td><input value="{{$auto['kilometers']}}"></td>
+                        </tr>
+
+                        <tr>
+                            <td>AC</td>
+                            <td><input type="checkbox" @if ($auto['air']==1) checked @endif> </td>
+                        </tr>
+
+                        <tr>
+                            <td>Airbag</td>
+                            <td><input type="checkbox" @if ($auto['air']==1) checked @endif> </td>
+                        </tr>
+
+                        <tr>
+                            <td>Dirección Asistida</td>
+                            <td><input type="checkbox" @if ($auto['steering']==1) checked @endif> </td>
+                        </tr>
+
+                        <tr>
+                            <td>ABS</td>
+                            <td><input type="checkbox" @if ($auto['abs']==1) checked @endif> </td>
+                        </tr>
+
+                        <tr>
+                            <td>GPS</td>
+                            <td><input type="checkbox" @if ($auto['gps']==1) checked @endif> </td>
+                        </tr>
+                        
+                    </tbody>
+
+
+                </table>
 
                 
                 
