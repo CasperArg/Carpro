@@ -8,9 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+        
         <!-- Styles -->
         <!--<style>
             html, body {
@@ -81,7 +80,8 @@
                 </div>
             @endif
 
-            
+            <div class="container text-center py">
+                
 
                 <!--<div class="links">
                     <a href="/laravel/facepro/public/autos/mostrarautos">Mostrar Autos</a>
@@ -92,54 +92,81 @@
                 
 
 
-                <div>
-
-                <div class="container text-center py">
                 
-                <!--<table class="table table-dark center">
-                    <thead>
-                        <tr>
-                            <td>Buscador</td>
-                            <td><input type="text" id="busqueda"></td>
-                        <tr>
-                    <thead>
-                </table>-->
 
                 <table class="table table-dark center">
                     <thead>
                         <tr>
-                            <td><h1>Autos en stock</h1></td>
+                            <td><h1>Agregar nuevo auto</h1></td>
                         <tr>
                     <thead>
                 </table>
 
-                <table table class="table table-dark center">
-                    <tr>
-                        <th>Marca</th>
-                        <th>Modelo</th>
+                <form method="GET" action="/laravel/carpro/public/altadeauto">
 
-
-
-                    </tr>
-
-                
-                    @foreach ($autos as $key => $auto)
+                <table class="table table-dark">
                     
-                    <tr>
-                        <td>{{$auto['brand']}}</td>
-                        <td>{{$auto['model']}}</td>
-                        <td><a href="/laravel/carpro/public/autos/detail/{{$auto['id']}}">Mostrar detalle</a></td>
+                    <tbody>
+                        <tr>
+                            <td>Marca</td>
+                            <td><input name="brand"></td>                        
+                        </tr>
 
+                        <tr>
+                            <td>Modelo</td>
+                            <td><input name="model"></td>                        
+                        </tr>
 
+                        <tr>
+                            <td>Color</td>
+                            <td><input name="color"></td>                        
+                        </tr>
 
-                    </tr>
+                        <tr>
+                            <td>Año</td>
+                            <td><input name="year"></td>                         
+                        </tr>
 
-                    @endforeach
+                        <tr>
+                            <td>Kilometraje</td>
+                            <td><input name="kilometers"></td>
+                        </tr>
+
+                        <tr>
+                            <td>AC</td>
+                            <td><input type="checkbox" name="air" value=1> </td>
+                        </tr>
+
+                        <tr>
+                            <td>Airbag</td>
+                            <td><input type="checkbox" name="airbag" value=1> </td>
+                        </tr>
+
+                        <tr>
+                            <td>Dirección Asistida</td>
+                            <td><input type="checkbox" name="steering" value=1> </td>
+                        </tr>
+
+                        <tr>
+                            <td>ABS</td>
+                            <td><input type="checkbox" name="abs" value=1> </td>
+                        </tr>
+
+                        <tr>
+                            <td>GPS</td>
+                            <td><input type="checkbox" name="gps" value=1> </td>
+                        </tr>
+
+                        <tr>
+                            <td><input type="submit" value="Agregar"></td>
+                        </tr>
+                        
+                    </tbody>
+
 
                 </table>
 
-                </div>
-                </div>
+                </form>
 
                 
                 

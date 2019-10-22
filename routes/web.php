@@ -16,8 +16,18 @@ Route::get('/', function () {
 });
 
 
-Route::get('/autos', 'CarController@mostraralgo');
-
 
 Route::get('/autos/detail/{id}', 'CarController@mostrardetalle');
+
+Route::get('/autos/delete/{id}', 'CarController@eliminarauto');
+
+
+Route::get('/autos/{busqueda?}/{que?}', 'CarController@mostraralgo');
+
+
+Route::get('/crearauto', 'CarController@formularioalta');
+
+Route::get('/altadeauto', 'Carcontroller@altadeauto');
+
+Route::get('/actualizarauto/{id}', 'CarController@actualizarauto');
 

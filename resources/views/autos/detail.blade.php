@@ -102,52 +102,75 @@
                     <thead>
                 </table>
 
+                <div class="flash-message">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                        @endif
+                    @endforeach
+                </div> <!-- end .flash-message -->
+
+                <form method="GET" action="/laravel/carpro/public/actualizarauto/{{$auto['id']}}">
+
                 <table class="table table-dark">
                     
                     <tbody>
                         <tr>
                             <td>Color</td>
-                            <td><input value="{{$auto['color']}}"></td>                        
+                            <td><input name="color" value="{{$auto['color']}}"></td>                        
                         </tr>
                         <tr>
                             <td>Año</td>
-                            <td><input value="{{$auto['year']}}"></td>                         
+                            <td><input name="year" value="{{$auto['year']}}"></td>                         
                         </tr>
 
                         <tr>
                             <td>Kilometraje</td>
-                            <td><input value="{{$auto['kilometers']}}"></td>
+                            <td><input name="kilometers" value="{{$auto['kilometers']}}"></td>
                         </tr>
 
                         <tr>
                             <td>AC</td>
-                            <td><input type="checkbox" @if ($auto['air']==1) checked @endif> </td>
+                            <td><input name="air" type="checkbox" @if ($auto['air']==1) checked @endif> </td>
                         </tr>
 
                         <tr>
                             <td>Airbag</td>
-                            <td><input type="checkbox" @if ($auto['air']==1) checked @endif> </td>
+                            <td><input name="airbag" type="checkbox" @if ($auto['air']==1) checked @endif> </td>
                         </tr>
 
                         <tr>
                             <td>Dirección Asistida</td>
-                            <td><input type="checkbox" @if ($auto['steering']==1) checked @endif> </td>
+                            <td><input name="steering" type="checkbox" @if ($auto['steering']==1) checked @endif> </td>
                         </tr>
 
                         <tr>
                             <td>ABS</td>
-                            <td><input type="checkbox" @if ($auto['abs']==1) checked @endif> </td>
+                            <td><input name="abs" type="checkbox" @if ($auto['abs']==1) checked @endif> </td>
                         </tr>
 
                         <tr>
                             <td>GPS</td>
-                            <td><input type="checkbox" @if ($auto['gps']==1) checked @endif> </td>
+                            <td><input name="gps" type="checkbox" @if ($auto['gps']==1) checked @endif> </td>
                         </tr>
                         
                     </tbody>
 
 
                 </table>
+
+                <table class="table table-dark center">
+                    <thead>
+                        <tr>
+                            <p><input type="submit" value="Guardar Cambios"></p></td>
+                        </tr>
+                        <tr>
+                            <a href="/laravel/carpro/public/autos">Volver a la lista</a>
+                        </tr>
+                    <thead>
+                </table>
+
+                </form>
 
                 
                 
