@@ -176,6 +176,20 @@
 
                 </table>
 
+                @if ($botonvolver) 
+
+                <table class="table table-dark">
+                    <tbody>
+                        <tr>
+                            <td><a href="/laravel/carpro/public/autos">Volver a lista completa</a></td>
+                        
+                        </tr>
+                    
+                    <tbody>
+                </table>
+
+                @endif
+
                 </div>
                 </div>
 

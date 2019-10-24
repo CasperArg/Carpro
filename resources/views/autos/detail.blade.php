@@ -83,12 +83,6 @@
             <div class="container text-center py">
                 
 
-                <!--<div class="links">
-                    <a href="/laravel/facepro/public/autos/mostrarautos">Mostrar Autos</a>
-                    <a href="https://laracasts.com">Salir al DOS</a>
-                    
-                </div>   -->
-
                 
 
 

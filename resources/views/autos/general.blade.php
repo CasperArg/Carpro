@@ -9,7 +9,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
+
         <!-- Styles -->
         <!--<style>
             html, body {
@@ -81,83 +81,148 @@
             @endif
 
             <div class="container text-center py">
-                
+    
 
-                
-
-
-                
 
                 <table class="table table-dark center">
                     <thead>
                         <tr>
-                            <td><h1>Agregar nuevo auto</h1></td>
+                            <td>
+                                
+
+                                @if ($vista == 'detail')
+                                    <h1>Detalles del {{$auto['brand']. " ".$auto['model']}}</h1>
+                                @endif
+                                @if ($vista == 'create')
+                                    <h1>Agregar nuevo auto</h1>
+                                @endif
+
+<!--<h1>{{ ($vista=='create') ? 'Agregar nuevo auto' : 'Detalles del '.$auto['brand']. " ".$auto['model'] }}</h1>-->
+
+                            </td>
                         <tr>
                     <thead>
                 </table>
 
-                <form method="GET" action="/laravel/carpro/public/altadeauto">
+
+
+
+
+
+
+
+
+
+                @if ($vista == 'detail')
+
+                <div class="flash-message">
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                        @endif
+                    @endforeach
+                </div> <!-- end .flash-message -->
+
+                @endif
+
+
+
+
+
+
+
+
+
+
+                @if ($vista == 'detail')
+                    <form method="GET" action="/laravel/carpro/public/actualizarauto/{{$auto['id']}}">
+                @endif
+
+                @if ($vista == 'create')
+                    <form method="GET" action="/laravel/carpro/public/altadeauto">
+                @endif
+
+
+                
 
                 <table class="table table-dark">
                     
                     <tbody>
-                        <tr>
-                            <td>Marca</td>
-                            <td><input name="brand"></td>                        
-                        </tr>
+                        
 
-                        <tr>
-                            <td>Modelo</td>
-                            <td><input name="model"></td>                        
-                        </tr>
+                        @if ($vista == 'create')
+                            <tr>
+                                <td>Marca</td>
+                                <td><input name="brand" value="{{$auto['brand']}}"></td>
+                            </tr>
+                            <tr>
+                                <td>Modelo</td>
+                                <td><input name="model" value="{{$auto['model']}}"></td>                        
+                            </tr>
+                        @endif
 
-                        <tr>
-                            <td>Color</td>
-                            <td><input name="color"></td>                        
-                        </tr>
-
-                        <tr>
+                            <tr>
+                                <td>Color</td>              
+                                <td><input name="color" {{ $vista == 'detail' ? "value=" . $auto['color'] : "" }}></td>
+                            </tr>
+                            <tr>
                             <td>Año</td>
-                            <td><input name="year"></td>                         
+                            <td><input name="year" {{ $vista == 'detail' ? "value=" . $auto['year'] : "" }}></td>                
                         </tr>
 
                         <tr>
                             <td>Kilometraje</td>
-                            <td><input name="kilometers"></td>
+                            <td><input name="kilometers" {{ $vista == 'detail' ? "value=" . $auto['kilometers'] : "" }}></td>
                         </tr>
 
                         <tr>
                             <td>AC</td>
-                            <td><input type="checkbox" name="air" value=1> </td>
+                            <td><input type="checkbox" name="air" value="1" {{ ($vista == 'detail' && $auto['air'] == 1) ? "checked" : "" }}></td>
+
                         </tr>
 
                         <tr>
                             <td>Airbag</td>
-                            <td><input type="checkbox" name="airbag" value=1> </td>
+                            <td><input type="checkbox" name="airbag" value="1" {{ ($vista == 'detail' && $auto['airbag'] == 1) ? "checked" : "" }}></td>
                         </tr>
 
                         <tr>
                             <td>Dirección Asistida</td>
-                            <td><input type="checkbox" name="steering" value=1> </td>
+                            <td><input type="checkbox" name="steering" value="1" {{ ($vista == 'detail' && $auto['steering'] == 1) ? "checked" : "" }}></td>
                         </tr>
 
                         <tr>
                             <td>ABS</td>
-                            <td><input type="checkbox" name="abs" value=1> </td>
+                            <td><input type="checkbox" name="abs" value="1" {{ ($vista == 'detail' && $auto['abs'] == 1) ? "checked" : "" }}></td>
                         </tr>
 
                         <tr>
                             <td>GPS</td>
-                            <td><input type="checkbox" name="gps" value=1> </td>
-                        </tr>
-
-                        <tr>
-                            <td><input type="submit" value="Agregar"></td>
+                            <td><input type="checkbox" name="gps" value="1" {{ ($vista == 'detail' && $auto['gps'] == 1) ? "checked" : "" }}></td>
                         </tr>
                         
                     </tbody>
 
 
+                </table>
+
+                <!-- Agregar lógica para que muestre botones de Volver y Guardar Cambios según se necesite-->
+
+                
+
+                <table class="table table-dark">
+                    <tbody>
+                        <tr>
+                            <td><a href="/laravel/carpro/public/autos">Volver a la lista</a></td>
+                        
+                        
+                        @if ($vista == 'create')
+                        
+                        
+                            <td><p><input type="submit" value="Guardar Cambios"></p></td>
+                        </tr>
+                        @endif
+                    <tbody>
                 </table>
 
                 </form>

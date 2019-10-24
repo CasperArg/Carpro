@@ -14,13 +14,16 @@ class CarController extends Controller
         if (empty($request->busqueda)) {
 
             $autos = \App\Auto::all();
+            $botonvolver = false;
 
         } else {
             $autos = \App\Auto::where($request->que, 'LIKE', '%'.$request->busqueda.'%')->get();
+            $botonvolver = true;
         }
 
+        
 
-        return view('autos.index', ['autos' => $autos]);
+        return view('autos.index', ['autos' => $autos, 'botonvolver' => $botonvolver]);
 
         //return 'holakease';
     }
@@ -32,8 +35,10 @@ class CarController extends Controller
         
         $auto = \App\Auto::find($request->id);
 
+        $vista = 'detail';
 
-        return view('autos.detail', ['auto' => $auto]);
+
+        return view('autos.general', ['auto' => $auto, 'vista' => $vista]);
 
         //return 'holakease';
         
@@ -44,40 +49,13 @@ class CarController extends Controller
 
         $auto = \App\Auto::find($id);
 
-        if (isset($request->air)) {
-            
-         $request->air = 1;
-      } else {
-         $request->air = 0;
-      }
-
-      if (isset($request->airbag)) {
-         
-         $request->airbag = 1;
-      } else {
-         $request->airbag = 0;
-      }
-
-      if (isset($request->steering)) {
-         
-         $request->steering = 1;
-      } else {
-         $request->steering = 0;
-      }
-
-      if (isset($request->abs)) {
-         
-         $request->abs = 1;
-      } else {
-         $request->abs = 0;
-      }
-
-      if (isset($request->gps)) {
-         
-         $request->gps = 1;
-      } else {
-         $request->gps = 0;
-      }
+        
+        $request->air = (isset($request->air)) ? 1 : 0;
+        $request->airbag = (isset($request->airbag)) ? 1 : 0;
+        $request->steering = (isset($request->steering)) ? 1 : 0;
+        $request->abs = (isset($request->abs)) ? 1 : 0;
+        $request->gps = (isset($request->gps)) ? 1 : 0;
+        
 
         $auto->color = $request->color;
         $auto->year = $request->year;
@@ -106,56 +84,24 @@ class CarController extends Controller
 
       return redirect('/autos');
 
-      
-
-
 
           }
 
 
-
-
     function formularioalta() {
-        return view('autos.create');
+         $vista = 'create';
+
+         $auto = new Auto;
+         return view('autos.general', ['auto' => $auto, 'vista' => $vista]);
     }
 
     function altadeauto(Request $request) {
        
-        if (isset($request->air)) {
-            
-            $request->air = 1;
-         } else {
-            $request->air = 0;
-         }
-
-         if (isset($request->airbag)) {
-            
-            $request->airbag = 1;
-         } else {
-            $request->airbag = 0;
-         }
-
-         if (isset($request->steering)) {
-            
-            $request->steering = 1;
-         } else {
-            $request->steering = 0;
-         }
-
-         if (isset($request->abs)) {
-            
-            $request->abs = 1;
-         } else {
-            $request->abs = 0;
-         }
-
-         if (isset($request->gps)) {
-            
-            $request->gps = 1;
-         } else {
-            $request->gps = 0;
-         }
-
+      $request->air = (isset($request->air)) ? 1 : 0;
+      $request->airbag = (isset($request->airbag)) ? 1 : 0;
+      $request->steering = (isset($request->steering)) ? 1 : 0;
+      $request->abs = (isset($request->abs)) ? 1 : 0;
+      $request->gps = (isset($request->gps)) ? 1 : 0;
             
 
         Auto::create($request->all());
