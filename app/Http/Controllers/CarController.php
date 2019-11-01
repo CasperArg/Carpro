@@ -35,6 +35,7 @@ class CarController extends Controller
         
         $auto = \App\Auto::find($request->id);
 
+        
         $vista = 'detail';
 
 
@@ -85,7 +86,7 @@ class CarController extends Controller
       return redirect('/autos');
 
 
-          }
+    }
 
 
     function formularioalta() {

@@ -85,7 +85,9 @@
                 </div>
 
                 <div class="links">
-                    <a href="/laravel/carpro/public/autos">Mostrar autos en stock</a>
+                    <a href="/laravel/carpro/public/autos">Autos</a>
+                    <a href="/laravel/carpro/public/casas">Casas</a>
+                    <a href="/laravel/carpro/public/jugadores">Jugadores</a>
                     <a href="https://laracasts.com">Salir al DOS</a>
                 </div>
             </div>
